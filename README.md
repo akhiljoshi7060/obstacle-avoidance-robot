@@ -261,25 +261,3 @@ This project is licensed under the **MIT License**.
 MIT License
 
 Copyright (c) 2025 Akhil Joshi
-
-
-## 👨‍💻 Author
-
-**Akhil Joshi**
-GitHub: [@akhiljoshi7060](https://github.com/akhiljoshi7060)
-
-## 🙏 Acknowledgments
-
-* ROS Community for the excellent framework
-* Gazebo Team for simulation environment
-* Urban Search and Rescue robotics research community
-
-## 📞 Contact
-
-For questions, issues, or contributions:
-
-* Open an issue on [GitHub Issues](https://github.com/akhiljoshi7060/obstacle-avoidance-robot/issues)
-* Pull requests are welcome!
-
-⭐ *Star this repository if you find it helpful!*
-Made with ❤️ by [Akhil Joshi](https://github.com/akhiljoshi7060)
