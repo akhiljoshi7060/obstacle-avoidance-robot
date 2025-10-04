@@ -1,0 +1,20 @@
+# Build files
+build/
+devel/
+*.pyc
+*.so
+
+# IDE
+.vscode/
+.idea/
+*~
+
+# ROS
+CATKIN_IGNORE
+
+# Compiled
+CMakeFiles/
+CMakeCache.txt
+
+# OS
+.DS_Store
