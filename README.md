@@ -1,192 +1,321 @@
-# Obstacle Avoidance Robot
+# 🤖 Obstacle Avoidance Robot
 
-A ROS-based autonomous robot system for Urban Search and Rescue operations with obstacle avoidance and victim detection capabilities.
+**A ROS-based autonomous robot system for Urban Search and Rescue operations with obstacle avoidance and victim detection capabilities.**
 
-![ROS](https://img.shields.io/badge/ROS-Noetic-blue)
-![C++](https://img.shields.io/badge/C++-11-green)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+---
 
-## Overview
+![ROS](https://img.shields.io/badge/ROS-Noetic-blue) ![C++](https://img.shields.io/badge/C++-11-blue) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow)
 
-This project simulates a disaster response scenario where robots autonomously explore unknown environments, build maps, and locate victims using fiducial markers. The system is designed to assist first responders by providing accurate maps with victim locations in collapsed building scenarios.
+## 📋 Overview
 
-## Features
+This project simulates disaster response scenarios where robots autonomously explore unknown environments (like collapsed buildings), build maps, and locate victims using fiducial markers. The system helps first responders by providing accurate maps with marked victim locations.
 
-- **Autonomous Navigation** - Self-directed exploration and pathfinding
-- **Real-time Obstacle Avoidance** - Dynamic obstacle detection and avoidance
-- **Multi-Robot Coordination** - Explorer and follower robot collaboration
-- **SLAM-based Mapping** - Simultaneous localization and mapping
-- **Victim Detection** - Fiducial marker-based victim identification
-- **Gazebo Simulation** - Realistic physics-based environment
-- **RViz Visualization** - Real-time monitoring and control
+**Key Components:**
 
-## Demo
+* **Explorer Robot:** Primary navigation and mapping
+* **Follower Robot:** Secondary support and victim detection
+* **ArUco Markers:** Victim location identification
 
-Check out the demonstration videos in the `video/` folder:
-- `obstacle.mp4` - Basic obstacle avoidance demonstration
-- `obstacle_update.mp4` - Updated features and improvements
+---
 
-## Prerequisites
+## ✨ Features
 
-- **ROS Noetic** or Melodic
-- **Ubuntu 20.04** (for Noetic) or 18.04 (for Melodic)
-- **Gazebo 11**
-- **RViz**
-- **C++11** compiler
+* ✅ **Autonomous Navigation:** Self-directed exploration and pathfinding
+* ✅ **Real-time Obstacle Avoidance:** Dynamic obstacle detection
+* ✅ **Multi-Robot Coordination:** Explorer and follower collaboration
+* ✅ **SLAM-based Mapping:** Simultaneous localization and mapping
+* ✅ **Victim Detection:** ArUco fiducial marker identification
+* ✅ **Gazebo Simulation:** Realistic physics environment
+* ✅ **RViz Visualization:** Real-time monitoring
 
-### Required ROS Packages
+---
 
-Install the necessary dependencies:
+## 🎥 Demo Videos
+
+Check out demonstration videos in the `video/` folder:
+
+* **obstacle** - Robot navigation and obstacle avoidance demo
+* **obstacle_1** - Additional demonstration footage
+
+---
+
+## 🛠️ Prerequisites
+
+**Operating System:**
+
+* Ubuntu 20.04 LTS (for ROS Noetic) - Recommended
+* Ubuntu 18.04 LTS (for ROS Melodic)
+
+**Required Software:**
+
+* ROS Noetic or Melodic
+* Gazebo 11
+* RViz
+* C++11 compiler
+
+**Install ROS Packages:**
+
 ```bash
+# Update system
 sudo apt-get update
+
+# Install Navigation Stack
 sudo apt-get install ros-noetic-navigation
 sudo apt-get install ros-noetic-move-base
 sudo apt-get install ros-noetic-tf2-ros
 sudo apt-get install ros-noetic-fiducial-msgs
 sudo apt-get install ros-noetic-gazebo-ros
 sudo apt-get install ros-noetic-amcl
-Note: Replace noetic with melodic if using ROS Melodic
-Installation
-1. Clone the Repository
-bashcd ~/catkin_ws/src
-git clone https://github.com/akhiljoshi7060/obstacle-avoidance-robot.git final_project_809y
-2. Install Dependencies
-bashcd ~/catkin_ws
-rosdep install --from-paths src --ignore-src -r -y
-3. Build the Project
-bashcd ~/catkin_ws
+```
+
+> **Note:** Replace `noetic` with `melodic` if using ROS Melodic.
+
+---
+
+## 📦 Installation
+
+**Step 1: Create Catkin Workspace**
+
+```bash
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws
 catkin_make
 source devel/setup.bash
-Tip: Add source ~/catkin_ws/devel/setup.bash to your ~/.bashrc file for automatic sourcing
-Usage
-Step 1: Launch the Simulation Environment
-Open a terminal and run:
-bashroslaunch final_project_809y multiple_robots.launch
-This command will:
+```
 
-Start Gazebo with the disaster environment
-Launch RViz for visualization
-Initialize the navigation stack
-Load robot models and sensors
+**Step 2: Clone Repository**
 
-Step 2: Run the Main Control Node
-In a new terminal:
-bashsource ~/catkin_ws/devel/setup.bash
+```bash
+cd ~/catkin_ws/src
+git clone https://github.com/akhiljoshi7060/obstacle-avoidance-robot.git final_project_809y
+```
+
+**Step 3: Install Dependencies**
+
+```bash
+cd ~/catkin_ws
+rosdep install --from-paths src --ignore-src -r -y
+```
+
+**Step 4: Build Project**
+
+```bash
+cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
+```
+
+---
+
+## 🚀 Usage
+
+**Step 1: Launch Simulation**
+
+```bash
+roslaunch final_project_809y multiple_robots.launch
+```
+
+This will start:
+
+* Gazebo simulation environment
+* RViz visualization
+* Navigation stack
+* Both robots
+
+**Step 2: Run Main Node**
+
+```bash
+source ~/catkin_ws/devel/setup.bash
 rosrun final_project_809y final_project_809y_node
-This starts the autonomous exploration and obstacle avoidance system.
-Step 3: Set Navigation Goals (Optional)
+```
 
-In RViz, click the "2D Nav Goal" button in the toolbar
-Click and drag on the map to set a destination point for the robot
-The robot will autonomously navigate to the goal while avoiding obstacles
+**Step 3: Set Navigation Goals (Optional)**
 
-Project Structure
+* In RViz, click **"2D Nav Goal"**
+* Click and drag on the map to set destination
+* Robot will navigate autonomously
+
+---
+
+## 📁 Project Structure
+
+```
 final_project_809y/
-├── config/              # Navigation and costmap configurations
-├── launch/              # ROS launch files
-│   └── multiple_robots.launch
-├── maps/                # Pre-built occupancy grid maps
-├── models/              # Gazebo robot and object models
-├── rviz/                # RViz configuration files
-├── scripts/             # Utility scripts
-├── video/               # Demo videos
-│   ├── obstacle.mp4
-│   └── obstacle_update.mp4
-├── worlds/              # Gazebo world files
-├── include/             # C++ header files
-│   └── final_project_809y/
-│       ├── explorer_robot.h
-│       └── follower_robot.h
-├── src/                 # C++ source files
-│   ├── main.cpp
-│   ├── explorer_robot.cpp
-│   └── follower_robot.cpp
-├── CMakeLists.txt       # CMake build configuration
-├── package.xml          # ROS package manifest
-├── README.md            # This file
-└── LICENSE              # MIT License
-Technologies Used
-TechnologyPurposeROS (Robot Operating System)Framework for robot software developmentC++11Core implementation languageGazebo3D physics-based simulation environmentRViz3D visualization tool for ROSNavigation StackPath planning and obstacle avoidancemove_baseAction-based navigation controllerAMCLAdaptive Monte Carlo LocalizationTF/TF2Coordinate frame transformationsactionlibAction-based asynchronous communication
-ROS Architecture
-Key Nodes:
+├── config/                  # Configuration files
+│   ├── include/            # Header files
+│   │   ├── explorer_robot.h
+│   │   └── follower_robot.h
+│   └── param/              # Parameter files
+│       ├── aruco_lookup.yaml
+│       ├── costmap_common_params_explorer.yaml
+│       ├── costmap_common_params_follower.yaml
+│       └── dwa_local_planner_params.yaml
+│
+├── launch/                  # Launch files
+│   ├── multiple_robots.launch
+│   ├── explorer_amcl.launch
+│   ├── follower_amcl.launch
+│   └── mapping/
+│
+├── maps/                    # Map files
+│   ├── final_world.pgm
+│   └── final_world.yaml
+│
+├── models/                  # Gazebo models
+│   ├── aruco_marker_0/
+│   ├── aruco_marker_1/
+│   ├── aruco_marker_2/
+│   └── aruco_marker_3/
+│
+├── rviz/                    # RViz configs
+│   ├── bringup.rviz
+│   └── navigation.rviz
+│
+├── scripts/                 # Scripts and source
+│   ├── install.bash
+│   └── src/
+│       ├── main.cpp
+│       ├── explorer_robot.cpp
+│       └── follower_robot.cpp
+│
+├── video/                   # Demo videos
+│   ├── obstacle
+│   └── obstacle_1
+│
+├── worlds/                  # Gazebo worlds
+│   └── final_world.world
+│
+├── CMakeLists.txt
+├── package.xml
+├── README.md
+└── LICENSE
+```
 
-final_project_809y_node - Main control and coordination
-move_base - Navigation and path planning
-amcl - Robot localization
-map_server - Provides map data
+---
 
-Important Topics:
+## 🔧 Technologies Used
 
-/cmd_vel - Velocity commands to robot
-/scan - Laser scanner data
-/odom - Odometry information
-/map - Occupancy grid map
-/fiducial_transforms - Victim marker positions
+| Technology           | Purpose                      |
+| -------------------- | ---------------------------- |
+| **ROS**              | Core robotics framework      |
+| **C++11**            | Primary programming language |
+| **Gazebo**           | 3D physics simulation        |
+| **RViz**             | 3D visualization             |
+| **Navigation Stack** | Path planning and navigation |
+| **move_base**        | Navigation controller        |
+| **AMCL**             | Robot localization           |
+| **TF/TF2**           | Coordinate transformations   |
 
-How It Works
+---
 
-Initialization: The system loads the environment and spawns robots
-Exploration: The explorer robot autonomously navigates unexplored areas
-Mapping: SLAM algorithms create a real-time map of the environment
-Obstacle Detection: Laser scanners detect obstacles in real-time
-Path Planning: The navigation stack computes collision-free paths
-Victim Detection: Fiducial markers identify victim locations
-Coordination: The follower robot tracks and assists the explorer
+## 🎯 How It Works
 
-Troubleshooting
-Build Errors
-bashcd ~/catkin_ws
+1. **Initialization:** System loads environment and spawns robots
+2. **Exploration:** Explorer robot autonomously navigates
+3. **Mapping:** SLAM creates real-time maps
+4. **Obstacle Detection:** Laser scanners detect obstacles
+5. **Path Planning:** Navigation stack computes safe paths
+6. **Victim Detection:** ArUco markers identify victims
+7. **Coordination:** Follower robot assists explorer
+
+---
+
+## 🐛 Troubleshooting
+
+**Build Errors**
+
+```bash
+cd ~/catkin_ws
 catkin_make clean
 catkin_make
-Missing Dependencies
-bashrosdep update
+```
+
+**Missing Dependencies**
+
+```bash
+rosdep update
 rosdep install --from-paths src --ignore-src -r -y
-Simulation Not Starting
+```
 
-Ensure Gazebo is properly installed
-Check for port conflicts: killall gzserver gzclient
-Verify ROS environment: echo $ROS_DISTRO
+**Gazebo Not Starting**
 
-Robot Not Moving
+```bash
+killall gzserver gzclient
+gazebo --version
+```
 
-Check that all nodes are running: rosnode list
-Verify topics are publishing: rostopic list
-Ensure navigation goals are set correctly in RViz
+**Robot Not Moving**
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-Author
-Akhil Joshi
+```bash
+rosnode list
+rostopic echo /cmd_vel
+```
 
-GitHub: @akhiljoshi7060
+---
 
-Acknowledgments
+## 📄 License
 
-ROS Community for the excellent framework
-Gazebo Team for the simulation environment
-Urban Search and Rescue robotics research community
+This project is licensed under the **MIT License**.
 
-Contact
-For questions, issues, or contributions:
-
-Open an issue on GitHub Issues
-Pull requests are welcome!
-
-Future Improvements
-
- Real robot hardware integration
- Advanced AI-based path planning
- Multiple victim detection algorithms
- Cloud-based mission control
- Multi-floor navigation support
-
-
-Star ⭐ this repository if you find it helpful!
-
-License
-markdown## License
+```
 MIT License
 
-Purpose: Legal protection and usage rights
-MIT: Permissive license (allows others to use freely)
-Important: Required for open-source projects
+Copyright (c) 2025 Akhil Joshi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+## 👨‍💻 Author
+
+**Akhil Joshi**
+GitHub: [@akhiljoshi7060](https://github.com/akhiljoshi7060)
+
+---
+
+## 🙏 Acknowledgments
+
+* ROS Community for the excellent framework
+* Gazebo Team for simulation environment
+* Urban Search and Rescue robotics research community
+
+---
+
+## 📞 Contact
+
+For questions, issues, or contributions:
+
+* Open an issue on [GitHub Issues](https://github.com/akhiljoshi7060/obstacle-avoidance-robot/issues)
+* Pull requests are welcome!
+
+---
+
+## 🔮 Future Improvements
+
+* [ ] Real robot hardware integration
+* [ ] Advanced AI-based path planning
+* [ ] Multiple victim detection algorithms
+* [ ] Cloud-based mission control
+* [ ] Multi-floor navigation support
+
+---
+
+⭐ *Star this repository if you find it helpful!*
+Made with ❤️ by [Akhil Joshi](https://github.com/akhiljoshi7060)
