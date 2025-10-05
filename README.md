@@ -1,14 +1,10 @@
 # 🤖 Obstacle Avoidance Robot
 
-**A ROS-based autonomous robot system for Urban Search and Rescue operations with obstacle avoidance and victim detection capabilities.**
+**A ROS-based multi-robot system for autonomous navigation, SLAM-based mapping, real-time obstacle avoidance, and victim detection using ArUco markers in Gazebo simulation..**
 
 ---
 
 ![ROS](https://img.shields.io/badge/ROS-Noetic-blue) ![C++](https://img.shields.io/badge/C++-11-blue) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow)
-
-## 📋 Overview
-
-This project simulates disaster response scenarios where robots autonomously explore unknown environments (like collapsed buildings), build maps, and locate victims using fiducial markers. The system helps first responders by providing accurate maps with marked victim locations.
 
 **Key Components:**
 
@@ -136,63 +132,6 @@ rosrun final_project_809y final_project_809y_node
 * Robot will navigate autonomously
 
 ---
-
-## 📁 Project Structure
-
-```
-final_project_809y/
-├── config/                  # Configuration files
-│   ├── include/            # Header files
-│   │   ├── explorer_robot.h
-│   │   └── follower_robot.h
-│   └── param/              # Parameter files
-│       ├── aruco_lookup.yaml
-│       ├── costmap_common_params_explorer.yaml
-│       ├── costmap_common_params_follower.yaml
-│       └── dwa_local_planner_params.yaml
-│
-├── launch/                  # Launch files
-│   ├── multiple_robots.launch
-│   ├── explorer_amcl.launch
-│   ├── follower_amcl.launch
-│   └── mapping/
-│
-├── maps/                    # Map files
-│   ├── final_world.pgm
-│   └── final_world.yaml
-│
-├── models/                  # Gazebo models
-│   ├── aruco_marker_0/
-│   ├── aruco_marker_1/
-│   ├── aruco_marker_2/
-│   └── aruco_marker_3/
-│
-├── rviz/                    # RViz configs
-│   ├── bringup.rviz
-│   └── navigation.rviz
-│
-├── scripts/                 # Scripts and source
-│   ├── install.bash
-│   └── src/
-│       ├── main.cpp
-│       ├── explorer_robot.cpp
-│       └── follower_robot.cpp
-│
-├── video/                   # Demo videos
-│   ├── obstacle
-│   └── obstacle_1
-│
-├── worlds/                  # Gazebo worlds
-│   └── final_world.world
-│
-├── CMakeLists.txt
-├── package.xml
-├── README.md
-└── LICENSE
-```
-
----
-
 ## 🔧 Technologies Used
 
 | Technology           | Purpose                      |
