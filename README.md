@@ -250,11 +250,6 @@ gazebo --version
 rosnode list
 rostopic echo /cmd_vel
 ```
-
----
-
-## 📄 License
-
 This project is licensed under the **MIT License**.
 
 ```
