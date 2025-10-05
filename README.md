@@ -249,10 +249,3 @@ gazebo --version
 ```bash
 rosnode list
 rostopic echo /cmd_vel
-```
-This project is licensed under the **MIT License**.
-
-```
-MIT License
-
-Copyright (c) 2025 Akhil Joshi
